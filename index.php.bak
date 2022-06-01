@@ -1,0 +1,123 @@
+ 
+<div class="box">
+	<div class="input">
+		<input type="text" name="name" id="name" value="PETRO" placeholder="Escribe tu nombre"> 
+    <input type="button" value="ok" onclick="convertir()">
+	</div>
+	<div class="design" id="design">
+		<div class="render">
+		 
+		</div>
+		<img class='ph' src='ph.png'>	
+	</div>
+	
+	<input type="button" value="descargar" onclick="downloadimage()">
+</div>	
+ 
+
+<style type="text/css">
+	.box{
+		    margin: 0 auto;
+		    width: fit-content;
+		    /* margin-left: 44px; */
+		    text-align: center;
+	}
+	.design {
+		 width: fit-content;
+		 padding: 64px;
+	}
+	.render{
+		font-size: 7em;
+		font-family: 'petroFont';
+		text-transform: uppercase;
+		margin-left: 129px;
+		width: fit-content;
+		/*padding-top: 93px;*/
+	}
+	.ph {
+	    width: 167px;
+	    padding-top: 73px;
+	    padding-left: 67px;
+	    display: block;
+	    margin: 0 auto;
+	}
+	.letra {
+    	margin-left: -58px;
+    	opacity: 0.9;
+	}
+	.o{
+		    width: 78px;
+		    margin-left: -18px;
+		    z-index: 1000000000000000;
+		    opacity: 0.9;
+	}
+	.o_d{
+	        width: 78px;
+		    margin-left: -19px;
+		    margin-bottom: 65px;
+		    z-index: 1000000000000000;
+		    opacity: 0.9;
+	}
+	@font-face {
+	  font-family: 'petroFont';
+	  src: url('GothamBold.ttf') format('truetype');
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+
+
+<script type="text/javascript">
+convertir();
+	function downloadimage() {
+                /*var container = document.getElementById("image-wrap");*/ /*specific element on page*/
+                var container = document.getElementById("design");; /* full page */
+                html2canvas(container, { allowTaint: true }).then(function (canvas) {
+
+                    var link = document.createElement("a");
+                    document.body.appendChild(link);
+                    link.download = $('#name').val() +".jpg";
+                    link.href = canvas.toDataURL();
+                    link.target = '_blank';
+                    link.click();
+                });
+     }
+
+
+ var textoA;
+ function convertir(){
+	var data =  $('#name').val()
+	textoA = Array.from(data);
+	//amarillo, azul, rojo, verde, fuscia
+	coloresE = ['#f7a600','#164194','#e41513','#32a337','#942685'];
+	render = "";
+	co= 0;
+	// EnO = textoA.indexOf("o");
+	// console.log("o:::",);
+    textoA.forEach( function(valor, indice, array) {
+      console.log(co + "::" + valor);
+      if(valor == "o" && textoA.length-1 == indice){
+      	render =  render +  "<img class='o' src='o.png'>" ;
+        $('.render').html(render);
+      }
+      else{
+      	render =  render +  "<span class='letra' style='color:"+coloresE[co]+"'> "+valor+"</span>" ;
+      	if(textoA.length-1 == indice){
+      	   render =  render +  "<img class='o_d' src='o.png'>" ;	
+      	}
+        $('.render').html(render);
+      }
+      co = control(co);
+  });
+ }
+ 
+function control(i) { 
+	r = i + 1;
+	if(i == 4)
+	r = 0;
+    return r;
+} 
+
+	
+</script>

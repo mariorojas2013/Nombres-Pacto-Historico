@@ -12,7 +12,8 @@ ini_set('display_errors','Off');
 <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
  
 <meta http-equiv="Pragma" content="no-cache">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" type="text/css" href="mini-default.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYSC715PK3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -22,13 +23,14 @@ ini_set('display_errors','Off');
   gtag('config', 'G-FYSC715PK3');
 </script>
 <div class="box">
-	<a class="social-btn sb-whatsapp mr-2 mb-2" target="_blank" href="https://web.whatsapp.com/send?text=Si desean tener su nombre estilo pactoHistorico ingresa en http://petro.260mb.org/ ">Compartir por Whatsapp</a><br><br>
-	<a class="social-btn sb-facebook mr-2 mb-2" target="_blank" href="http://www.facebook.com/sharer.php?s=100&p[url]=http://petro.260mb.org&p[title]=Nomres pactoHistorico&p[summary]=Si desean tener su nombre estilo pactoHistorico  ">Compartir por Facebook</a>
+	<br>
+	<a class="social-btn sb-whatsapp mr-2 mb-2" target="_blank" href="https://web.whatsapp.com/send?text=Si desean tener su nombre estilo pactoHistorico ingresa en http://petro.260mb.org/ "> Compartir  <i  class="fa fa-whatsapp" aria-hidden="true"></i></a><br><br>
+	<a class="social-btn sb-facebook mr-2 mb-2" target="_blank" href="http://www.facebook.com/sharer.php?s=100&p[url]=http://petro.260mb.org&p[title]=Nomres pactoHistorico&p[summary]=Si desean tener su nombre estilo pactoHistorico  ">Compartir  <i class="fa fa-facebook-official" aria-hidden="true"></i></a>
 	<br>
 	<div class="input">
 
 		<br>
-		<input type="text" name="name" id="name" value=""   placeholder="Escribe tu nombre"> 
+		<input type="text" name="name" id="name" value="<?php echo $_GET['nombre']; ?>"   placeholder="Escribe tu nombre"> 
     <input type="button" value="Enviar" onclick="abrir($('#name').val())"  >
 	</div>
 	<div class="design" id="design">
@@ -42,11 +44,33 @@ ini_set('display_errors','Off');
 	
 	<input type="button" value="descargar" onclick="downloadimage()">
 	<br><br>
-	<div>Version 0.45</div>
+	<div style="font-family: monospace;">Version 0.47</div>
 </div>	
  
 
 <style type="text/css">
+	html, * {
+		font-family:initial;
+		    line-height: initial !important;
+		    /*-webkit-text-size-adjust: 100%;*/
+		}
+	input[type="button"] {
+	    height: 34px;
+	    cursor: pointer;
+	    color: white;
+	    border-radius: 20px;
+	    padding: 10px;
+	    border-width: 0px;
+	    /* background: blue; */
+	    background: rgb(22,65,148);
+	    background: linear-gradient(227deg, rgba(22,65,148,1) 35%, rgba(38,96,148,1) 100%);
+	}
+	input#name {
+	    border-radius: 22px;
+	    border-width: 2px;
+	    border-color: #0c3ea191;
+	    padding: 8px;
+	}	
 	.autor{
 		       color: #99999924;
     position: absolute;
@@ -77,7 +101,11 @@ ini_set('display_errors','Off');
 	    display: block;
 	    margin: 0 auto;
 	}
+	button:hover, button:focus, [type="button"]:hover, [type="button"]:focus, [type="submit"]:hover, [type="submit"]:focus, [type="reset"]:hover, [type="reset"]:focus, a.button:hover, a.button:focus, label.button:hover, label.button:focus, .button:hover, .button:focus, a[role="button"]:hover, a[role="button"]:focus, label[role="button"]:hover, label[role="button"]:focus, [role="button"]:hover, [role="button"]:focus {
+		    background: #15427a;
+		}
 	.letra {
+		font-family: 'petroFont','Arial Black';
     	margin-left: -58px;
     	opacity: 0.9;
 	}

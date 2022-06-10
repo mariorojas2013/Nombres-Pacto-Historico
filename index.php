@@ -87,8 +87,12 @@ $cont = count($arrayc);
 		    /* margin-left: 44px; */
 		    text-align: center;
 	}
+	.pad {
+	    width: fit-content;
+	    margin: 0 auto;
+	}
 	.design {
-		         width: max-content;
+		         width: fit-content;
 		    padding: 64px;
 		    background: #fcfeff;
 		    padding-left: 6px;
@@ -99,17 +103,19 @@ $cont = count($arrayc);
 	    font-family: 'petroFont','Arial Black';
 	    text-transform: uppercase;
 	        margin-left: 59px;
-	    min-width: 1000px;
+	   min-width: max-content;
 	}
 	.render.ml{
-		 position: relative;
+	    position: relative;
 	    color: #952385;
 	    font-size: 6em;
+	    /* -webkit-transform: scale(0.4); */
 	    font-family: 'petroFont','Arial Black';
 	    text-transform: uppercase;
-	    top: 197px;
+	    top: 189px;
+	    left: -1%;
 	    margin: -106px auto;
-	    width: fit-content;
+	    width: 1000px;
 	}
 	.mlt {
 	    width: 167px;
@@ -124,6 +130,9 @@ $cont = count($arrayc);
 	    padding-left: 67px;
 	    display: block;
 	    margin: 0 auto;
+	}
+	a.comuntext.enlads:link {
+	    color: #fcfeff;
 	}
 	button:hover, button:focus, [type="button"]:hover, [type="button"]:focus, [type="submit"]:hover, [type="submit"]:focus, [type="reset"]:hover, [type="reset"]:focus, a.button:hover, a.button:focus, label.button:hover, label.button:focus, .button:hover, .button:focus, a[role="button"]:hover, a[role="button"]:focus, label[role="button"]:hover, label[role="button"]:focus, [role="button"]:hover, [role="button"]:focus {
 		    background: #15427a;
@@ -241,6 +250,18 @@ $cont = count($arrayc);
 	     padding-left: 54px;
 	    font-family: 'petroFont';
 	}
+	.enlads
+	{
+		    height: 34px;
+	    cursor: pointer;
+	    color: white;
+	    border-radius: 20px;
+	    padding: 10px;
+	    border-width: 0px;
+	    /* background: blue; */
+	    background: rgb(22,65,148);
+	    background: linear-gradient(227deg, rgba(22,65,148,1) 35%, rgba(38,96,148,1) 100%);
+	}
 	.formH
 	{
 		    background: initial;
@@ -271,12 +292,27 @@ $cont = count($arrayc);
 	  font-family: 'petroFont';
 	  src: url('GothamBold.ttf') format('truetype');
 	}
-	  @media (max-width: 650px) { 
+	/* @media (max-width: 650px) { 
+		.render.ml {
+		    position: relative;
+		    color: #952385;
+		    font-size: 6em;
+		    -webkit-transform: scale(0.4);
+		    font-family: 'petroFont','Arial Black';
+		    text-transform: uppercase;
+		    top: 91px;
+		    left: -1%;
+		    margin: -106px auto;
+		    width: fit-content;
+		}
+	}*/
+
+	/*  @media (max-width: 650px) { 
 		.design{
 			-webkit-transform: scale(0.4);
 		}
 	  
-	}
+	}*/
 
 	/*@media (min-width: 650px) {
 	  .containerDesktop {
@@ -304,7 +340,6 @@ fjs.parentNode.insertBefore(js, fjs);
 		data-layout="button_count">1
 		</div> 
 	 </header>
-	 <!-- <img src="" class="img_nueva" style="position: absolute;   margin-left: -1000000;"> -->
 	
 		
 		<div class="input">
@@ -342,26 +377,34 @@ fjs.parentNode.insertBefore(js, fjs);
 	    <br>
 		
 		 <form style="width: 531px;      background: #f8f8f8;  margin: 0 auto;" onsubmit="abrir($('#name').val(),$('#libre').val(),event)">
-		  <input type="text" autofocus required name="name" id="name" value="<?php echo $_GET['nombre']; ?>"   placeholder="Escribe tu nombre"> 
+		  <input type="text" autocomplete="off" autofocus required name="name" id="name" value="<?php echo $_GET['nombre']; ?>"   placeholder="Escribe tu nombre"> 
 	    <input type="submit" value="Crear"  class="comuntext" >
 	    </form>
 	   
 		</div>
-		<div class="design" id="design">
-			<div class="render ph">
-			 
-			</div>
-			<div class="render ml mlt">
-			 
-			</div>
-			<output class="em" id="list"></output>
-			<img class='ph' src='ph.png'>
-			<img class='ml' src='ml.jpg'>
-			<div id="adicionalText" class=""></div>
-			<div class="autor">by MR</div>	
-			 	
+		<div class="pad">
+			<div class="design" id="design">
+				<div class="render ph">
+				 
+				</div>
+				<div class="render ml mlt">
+				 
+				</div>
+				<output class="em" id="list"></output>
+				<img class='ph' src='ph.png'>
+				<img class='ml' src='ml.jpg'>
+				<div id="adicionalText" class=""></div>
+				<div class="autor">by MR</div>	
+				 	
+			</div>	
 		</div>
 		
+		
+
+		<!-- <a  class="comuntext enlads" href="" download onclick="downloadimage()">
+		   Descargar
+		</a> -->
+
 		<input type="button" class="comuntext" value="Descargar" onclick="downloadimage()">
 		<br><br>
 		<div class="comuntext"><?php echo $cont ?> frases se han registrado  <i class="fa fa-coffee" aria-hidden="true"></i></div>
@@ -405,7 +448,12 @@ fjs.parentNode.insertBefore(js, fjs);
 		if(opcion != "em"){
 			$('#list').html('');
 		}
-		
+			$('.ph').hide();
+			$('.ml').hide();
+			$('.ps').hide();
+			$('.cv').hide();
+			$('.lb').hide();
+			$('.pz').hide();
 
 		if(opcion == "ph" || opcion == "ps" || opcion == "cv" || opcion == "pz" || opcion == "lb" || opcion == "em"){
 			$('.ph').show();
@@ -473,6 +521,8 @@ cambio();
 // compilar();
 	function downloadimage() {
                 /*var container = document.getElementById("image-wrap");*/ /*specific element on page*/
+                
+                
                 var container = document.getElementById("design");; /* full page */
                 html2canvas(container, { allowTaint: true }).then(function (canvas) {
 
@@ -480,14 +530,20 @@ cambio();
                     document.body.appendChild(link);
                     link.download = $('#name').val() +".jpg";
                     link.href = canvas.toDataURL();
-                    link.target = '_blank';
+                    link.target = '_self';
                     link.click();
 
                 });
+                var opcion = $('input:radio[name=selectP]:checked').val();
+
+				if(opcion == "em"){
+	                compartir();
+	            }
+
      }
 
      function compilar(){
-     			 var container = document.getElementById("design");; /* full page */
+     			var container = document.getElementById("design");; /* full page */
                 html2canvas(container, { allowTaint: true }).then(function (canvas) {
 
                     var link = document.createElement("a");
@@ -513,7 +569,7 @@ cambio();
  	var opcion = $('input:radio[name=selectP]:checked').val();
  	var data =  $('#name').val();
 
-
+ 	$('#adicionalText').html("");
  	$("#adicionalText").removeClass();
  	if(opcion == "pz")
  	{
@@ -577,8 +633,22 @@ cambio();
  		$('.render').html(data);
  	}
  	
- 	
-	
+		var container = document.getElementById("design");; /* full page */
+            html2canvas(container, { allowTaint: true }).then(function (canvas) {
+
+                // link.href = canvas.toDataURL();
+                 $('.enlads').attr('href',canvas.toDataURL());
+                
+            }); 
+	   var opcion = $('input:radio[name=selectP]:checked').val();
+
+				if(opcion == "em"){
+	                compartir();
+	            }
+
+	            
+
+	            
 	
  }
  
@@ -622,7 +692,24 @@ function archivo(evt) {
  
  document.getElementById('files').addEventListener('change', archivo, false);
 
-	
+function compartir(){
+	 
+	var container = document.getElementById("design");; /* full page */
+                html2canvas(container, { allowTaint: true }).then(function (canvas) {
+						   $.ajax({
+						        type: "POST",
+						        url: "index.php?recibirCom=ok",
+						        data: {
+						          base64Img: canvas.toDataURL()
+						        }
+						      }).done(function(o){
+						        console.log("saved")
+						        // console.log(renderedImg);
+						      });
+                    
+                });
+     
+  }	
 </script>
  </body>
  </html>
@@ -630,6 +717,19 @@ function archivo(evt) {
 
 
 <?php 
+
+  
+$recibirCom = $_GET['recibirCom'];
+if($recibirCom == "ok")
+{
+   $img = $_POST['base64Img'];
+   $base_to_php = explode(',', $img);
+   $data = base64_decode($base_to_php[1]);
+
+   //saving /n/img/
+   $fileName = 'n/img/photo'.date("YmdHisu").'.mr';
+   file_put_contents($fileName, $data);
+}
 
 $nombre = $_GET['nombre'];
 $nombreArchivo = "n/nombres.txt";
